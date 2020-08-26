@@ -1,5 +1,5 @@
-pipeline
-{
+currentBuild.displayName = "MyAppBuild#" + currentBuild.number
+pipeline{
   agent any
   stages{
       stage("Code Checkout"){
