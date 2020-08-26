@@ -4,23 +4,17 @@ pipeline{
   stages{
       stage("Code Checkout"){
         steps{
-          step{
-            git branch: 'devops', url: 'https://github.com/gauravjadhav8/my-app'
-          }
+          git branch: 'devops', url: 'https://github.com/gauravjadhav8/my-app'
         }
       }
       stage("Compile-Package"){
         steps{
-            step{
               sh "mvn clean package"
-            }
           }
       }
       stage("Push to DockerHub"){
         steps{
-          step{
             sh "docker build -t . peace_myweb_new"
-          }
         }
       }
    }
