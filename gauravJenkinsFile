@@ -9,7 +9,7 @@ pipeline
           sh "mvn clean package"
       }
       stage("Push to DockerHub"){
-          sh "cp target/*.war /home/ubuntu/peace/"
+          sh "docker build -t . peace_myweb_new"
       }
    }
 }
