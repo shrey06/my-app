@@ -3,13 +3,25 @@ pipeline
   agent any
   stages{
       stage("Code Checkout"){
-          git branch: 'devops', url: 'https://github.com/gauravjadhav8/my-app'
+        steps{
+          step{
+            git branch: 'devops', url: 'https://github.com/gauravjadhav8/my-app'
+          }
+        }
       }
       stage("Compile-Package"){
-          sh "mvn clean package"
+        steps{
+            step{
+              sh "mvn clean package"
+            }
+          }
       }
       stage("Push to DockerHub"){
-          sh "docker build -t . peace_myweb_new"
+        steps{
+          step{
+            sh "docker build -t . peace_myweb_new"
+          }
+        }
       }
    }
 }
