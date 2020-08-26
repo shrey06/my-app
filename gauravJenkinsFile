@@ -3,7 +3,7 @@ pipeline
   agent any
   stages{
       stage("Code Checkout"){
-              git "https://github.com/javahometech/my-app"
+          git branch: 'devops', url: 'https://github.com/gauravjadhav8/my-app'
       }
       stage("Compile-Package"){
           sh "mvn clean package"
