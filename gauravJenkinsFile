@@ -14,7 +14,7 @@ pipeline{
       }
       stage("Push to DockerHub"){
         steps{
-            sh "docker build -t . peace_myweb_new"
+            sh "docker build . -t peace_myweb_new"
         }
       }
    }
