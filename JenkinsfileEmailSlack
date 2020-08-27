@@ -19,6 +19,21 @@ pipeline{
               }
           }
       }
+      stage ("Sonar QualityGate") {
+       steps {
+            def qualitygate = waitForQualityGate()
+            if (qualitygate.status != "OK") {
+              error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+            } else {
+              slackSend baseUrl: 'https://hooks.slack.com/services/',
+              channel: '#jenkins-poc',
+              color: 'good',
+              message: "Sonar Quality gate passed with status: ${qualitygate.status}",
+              teamDomain: 'kuliza-talk',
+              tokenCredentialId: 'jenkins-poc-slack-token'
+            }
+         }
+      }
       stage("Email Notification"){
         steps{
            mail bcc: '', body: '''Hi Team,
