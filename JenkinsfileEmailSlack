@@ -26,5 +26,11 @@ Lendin Jenkins''',
            to: 'shrey.bhasin@kuliza.com,gaurav.jadhav@kuliza.com,manjunath.c@kuliza.com'
         }
       }
+      
+      stage("Slack Notification"){
+        steps{  
+            slackSend channel: '#jenkins-poc', color: 'good', message: 'Jenkins build ran sucessfully', tokenCredentialId: 'jenkins-poc-slack-token'
+          }
+      }
    }
 }
