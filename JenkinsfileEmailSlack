@@ -24,14 +24,13 @@ pipeline{
         script {
             def qualitygate = waitForQualityGate()
             if (qualitygate.status != "OK") {
-              error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
-            } else {
               slackSend baseUrl: 'https://hooks.slack.com/services/',
               channel: '#jenkins-poc',
-              color: 'good',
-              message: "Sonar Quality gate passed with status: ${qualitygate.status}",
+              color: 'danger',
+              message: "Sonar Quality gate failed with status: ${qualitygate.status}",
               teamDomain: 'kuliza-talk',
               tokenCredentialId: 'jenkins-poc-slack-token'
+              error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
             }
           }
         }
