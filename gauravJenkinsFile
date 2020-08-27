@@ -14,7 +14,7 @@ pipeline{
       }
       stage("Push to DockerHub"){
         steps{
-            withDockerRegistry(credentialsId: 'ecr:af-south-1:aws-ecr-gaurav', url: 'https://612359323314.dkr.ecr.ap-south-1.amazonaws.com/mytestapp') {
+            withDockerRegistry(credentialsId: 'ecr:ap-south-1:aws-ecr-gaurav', url: 'https://612359323314.dkr.ecr.ap-south-1.amazonaws.com/mytestapp') {
                 script {
                     def newImg = docker.build "612359323314.dkr.ecr.ap-south-1.amazonaws.com/mytestapp:peace"
                     newImg.push()
