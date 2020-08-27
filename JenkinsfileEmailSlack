@@ -29,7 +29,12 @@ Lendin Jenkins''',
       
       stage("Slack Notification"){
         steps{  
-            slackSend channel: '#jenkins-poc', color: 'good', message: 'Jenkins build ran sucessfully', tokenCredentialId: 'jenkins-poc-slack-token'
+            slackSend baseUrl: 'https://hooks.slack.com/services/',
+            channel: '#jenkins-poc',
+            color: 'good',
+            message: 'Jenkins build ran successfully.',
+            teamDomain: 'kuliza-talk',
+            tokenCredentialId: 'jenkins-poc-slack-token'
           }
       }
    }
