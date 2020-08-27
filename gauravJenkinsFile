@@ -14,7 +14,9 @@ pipeline{
       }
       stage("Push to DockerHub"){
         steps{
-            sh "sudo docker build . -t peace_myweb_new"
+            withDockerRegistry(credentialsId: 'ecr:af-south-1:aws-ecr-gaurav', url: 'https://612359323314.dkr.ecr.ap-south-1.amazonaws.com/mytestapp') {
+                docker.build('612359323314.dkr.ecr.ap-south-1.amazonaws.com/mytestapp:peace').push('peace')
+          }
         }
       }
    }
