@@ -14,15 +14,16 @@ pipeline{
       }
       stage("Email Notification"){
         steps{
-           mail bcc: '', body: 
-           '''Hi Welcome to jenkins email alerts
-           Thanks
-           Lend.in''',
+           mail bcc: '', body: '''Hi Team,
+Jenkins Build has run successfully.
+
+Thanks,
+Lendin Jenkins''',
            cc: '',
            from: '',
            replyTo: '',
-           subject: 'Jenkins Job',
-           to: 'shrey.bhasin@kuliza.com'
+           subject: 'Jenkins Pipeline POC',
+           to: 'shrey.bhasin@kuliza.com,gaurav.jadhav@kuliza.com,manjunath.c@kuliza.com'
         }
       }
    }
