@@ -12,6 +12,13 @@ pipeline{
               sh "mvn clean package"
           }
       }
+      stage("Sonar Analysis"){
+        steps{
+              withSonarQubeEnv('sonar-6') { 
+                sh "mvn sonar:sonar"
+              }
+          }
+      }
       stage("Email Notification"){
         steps{
            mail bcc: '', body: '''Hi Team,
