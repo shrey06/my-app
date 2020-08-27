@@ -21,6 +21,7 @@ pipeline{
       }
       stage ("Sonar QualityGate") {
        steps {
+        script {
             def qualitygate = waitForQualityGate()
             if (qualitygate.status != "OK") {
               error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
@@ -32,7 +33,8 @@ pipeline{
               teamDomain: 'kuliza-talk',
               tokenCredentialId: 'jenkins-poc-slack-token'
             }
-         }
+          }
+        }
       }
       stage("Email Notification"){
         steps{
