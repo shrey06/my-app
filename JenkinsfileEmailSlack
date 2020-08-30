@@ -60,5 +60,10 @@ Lendin Jenkins''',
             tokenCredentialId: 'jenkins-poc-slack-token'
           }
       }
+      stage("Clean Workspace"){
+        steps{  
+            cleanWs()
+          }
+      }
    }
 }
