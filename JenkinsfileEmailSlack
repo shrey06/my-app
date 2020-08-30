@@ -19,7 +19,7 @@ pipeline{
               }
           }
       }
-      stage ("Sonar QualityGate") {
+      stage ("Sonar Quality Gate 1") {
        steps {
         script {
             def qualitygate = waitForQualityGate()
